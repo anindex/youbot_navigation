@@ -1,0 +1,11 @@
+<launch>
+  <!-- Node RTAB-Map Remote Visualization -->
+  <group ns="rtabmap">
+    <node pkg="rtabmap_ros" type="rtabmapviz" name="rtabmapviz" output="screen">
+      <remap from="odom" to="/odom"/>
+      
+      <param name="frame_id" type="string" value="base_footprint"/>
+    </node>
+  </group>
+</launch>
+

@@ -1,0 +1,37 @@
+local_costmap:
+  obstacles:
+    observation_sources: base_scan base_obstacles base_ground
+
+    base_scan: {
+      topic: /base_scan,
+      sensor_frame: /laser_link,
+      data_type: LaserScan,
+      expected_update_rate: 0.2,
+      observation_persistence: 0.0,
+      clearing: true,           
+      marking: true,
+      min_obstacle_height: -0.10,
+      inf_is_valid: false}
+        
+    base_obstacles: {
+      topic: cloud_obstacles,
+      sensor_frame: base_footprint,
+      data_type: PointCloud2,
+      expected_update_rate: 0.8,      
+      observation_persistence: 0.0,
+      clearing: true,
+      marking: true,
+      min_obstacle_height: 0.04,
+      inf_is_valid: false}
+
+    base_ground: {
+      topic: cloud_ground,
+      sensor_frame: base_footprint,
+      data_type: PointCloud2,
+      expected_update_rate: 0.8,
+      observation_persistence: 0.0,
+      clearing: true,
+      marking: false,
+      min_obstacle_height: -1.0,
+      inf_is_valid: false}
+

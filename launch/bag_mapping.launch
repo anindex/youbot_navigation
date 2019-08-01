@@ -1,0 +1,21 @@
+<launch>
+  <!-- Bag File Location -->
+  <arg name="bag_file" default="/home/youbot/catkin_ws/src/youbot_controller/bag/default.bag"/>
+  
+  <!-- Mapping Approach (Use gmapping, hector_mapping or rtabmap) -->
+  <arg name="mapping_approach" default="gmapping"/>
+  
+  <!-- Use Simulation Time -->
+  <param name="use_sim_time" value="true"/>
+
+  <!-- Parameter URDF Model youBot-->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find youbot_description)/robots/youbot.urdf.xacro'"/>
+
+  <!-- Mapping -->
+  <include file="$(find youbot_controller)/launch/separate/$(arg mapping_approach).launch"/>
+
+  <!-- Rosbag Replay-->
+  <node pkg="rosbag" type="play" name="rosbag_play" args="--pause --clock $(arg bag_file)" output="screen"/>
+
+</launch>
+

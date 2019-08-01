@@ -1,0 +1,14 @@
+<launch>
+  <!-- Driver youBot -->
+  <include file="$(find youbot_controller)/launch/separate/youbot_driver_ros_interface.launch" />
+  
+  <!-- Driver Laser Scanner -->
+  <include file="$(find youbot_controller)/launch/separate/lms1xx.launch" />
+  
+  <!-- Driver Kinect -->
+  <include file="$(find youbot_controller)/launch/separate/freenect.launch" />
+  
+  <!-- Multiplexer Remote Control -->
+  <include file="$(find youbot_controller)/launch/separate/twist_mux.launch" />
+</launch>
+

@@ -1,0 +1,10 @@
+<launch>
+  <!-- Node Twist Multiplexer -->
+  <node pkg="twist_mux" type="twist_mux" name="twist_mux">
+    <remap from="cmd_vel_out" to="cmd_vel"/>
+
+    <rosparam file="$(find youbot_controller)/config/twist_mux_params.yaml" command="load"/>
+  </node>
+
+</launch>
+

@@ -1,0 +1,16 @@
+<launch>
+  <!-- Map Server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find youbot_controller)/map/default.yaml"/>
+
+  <!-- Localization -->
+  <include file="$(find youbot_controller)/launch/separate/amcl.launch"/>
+  
+  <!-- Navigation -->
+  <include file="$(find youbot_controller)/launch/separate/move_base.launch">
+    <arg name="use_static_map"          value="true"/>
+    <arg name="use_obstacles_detection" value="false"/>
+    <arg name="use_trajectory_server"   value="true"/>
+  </include>
+
+</launch>
+

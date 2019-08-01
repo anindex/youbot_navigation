@@ -1,0 +1,20 @@
+topics:
+- name    : joystick
+  topic   : cmd_vel_joystick
+  timeout : 0.5
+  priority: 100
+- name    : keyboard
+  topic   : cmd_vel_keyboard
+  timeout : 0.5
+  priority: 90
+- name    : navigation
+  topic   : cmd_vel_navigation
+  timeout : 0.5
+  priority: 10
+
+locks:
+- name    : stop
+  topic   : stop
+  timeout : 0.0
+  priority: 200
+

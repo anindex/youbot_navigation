@@ -1,0 +1,6 @@
+<launch>
+  <!-- Rosbag Recording -->
+  <node pkg="rosbag" type="record" name="rosbag_record" args="-o $(find youbot_controller)/bag/youbot /tf /tf_static /odom /base_scan /camera/rgb/camera_info /camera/rgb/image_rect_color /camera/depth_registered/image_raw" output="screen"/>
+
+</launch>
+

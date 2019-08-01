@@ -1,0 +1,24 @@
+<launch>
+  <!-- If receiving an Error Message containing "Excecute as root", go to ~/catkin_ws/devel/.private/youbot_driver_ros_interface/lib/youbot_driver_ros_interface/ Folder and execute: -->
+  <!-- # setcap cap_net_raw+ep youbot_driver_ros_interface -->
+  <param name="youBotHasBase" type="bool" value="true"/>
+  <param name="youBotHasArms" type="bool" value="true"/> 
+  <param name="youBotBaseName" type="str" value="youbot-base"/>
+  <param name="youBotArmName1" type="str" value="youbot-manipulator"/>
+  <param name="youBotDriverCycleFrequencyInHz" type="double" value="50.0"/>
+  <param name="youBotConfigurationFilePath" type="string" value="$(find youbot_driver)/config"/>
+
+  <!-- Parameter URDF Model youBot -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find youbot_description)/robots/youbot.urdf.xacro'"/>
+
+  <!-- Node youBot Driver -->
+  <node pkg="youbot_driver_ros_interface" type="youbot_driver_ros_interface" name="youbot_driver_ros_interface" output="screen">
+    <remap from="base/joint_states" to="/joint_states"/> 
+    <remap from="arm_1/joint_states" to="/joint_states"/> 
+  </node>
+
+  <!-- Node Robot State Publisher -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen"/>
+  
+</launch>
+

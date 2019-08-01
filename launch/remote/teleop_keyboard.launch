@@ -1,0 +1,7 @@
+<launch>
+  <!-- Node Teleoperation Keyboard -->
+  <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen">
+    <remap from="cmd_vel" to="cmd_vel_keyboard"/>
+  </node>
+</launch>
+

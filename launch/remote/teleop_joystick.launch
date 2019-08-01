@@ -1,0 +1,20 @@
+<launch>
+  <arg name="joy_config" value="joy_logitech"/>
+  <arg name="joy_dev" value="/dev/input/js0"/>
+  <arg name="config_filepath" value="$(find youbot_controller)/config/$(arg joy_config)_params.yaml"/>
+
+  <!-- Node Joy Driver -->
+  <node pkg="joy" type="joy_node" name="joy" output="screen">
+    <param name="dev" value="$(arg joy_dev)"/>
+    <param name="deadzone" value="0.0"/>
+  </node>
+
+  <!-- Node Teleoperation Joystick -->
+  <node pkg="teleop_twist_joy" type="teleop_node" name="teleop_twist_joy" output="screen">
+    <remap from="cmd_vel" to="cmd_vel_joystick"/>
+
+    <rosparam command="load" file="$(arg config_filepath)"/>
+  </node>
+
+</launch>
+
