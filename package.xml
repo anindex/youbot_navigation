@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>youbot_navigationr</name>
+  <name>youbot_navigation</name>
   <version>1.0.0</version>
   <description>The youbot_navigation package</description>
   <author>Le Thai An</author>
