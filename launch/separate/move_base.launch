@@ -20,58 +20,58 @@
   <node pkg="move_base" type="move_base" name="move_base" respawn="false" output="screen">
     <remap from="cmd_vel" to="cmd_vel_navigation"/>
 
-    <rosparam file="$(find youbot_controller)/config/move_base_params.yaml" command="load"/>
-    <rosparam file="$(find youbot_controller)/config/recovery_params.yaml" command="load"/>
+    <rosparam file="$(find youbot_navigation)/config/move_base_params.yaml" command="load"/>
+    <rosparam file="$(find youbot_navigation)/config/recovery_params.yaml" command="load"/>
   </node>
 
   <!-- Parameter Local Planner -->
   <group ns="move_base" if="$(arg base_local_planner)">
     <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
-    <rosparam file="$(find youbot_controller)/config/local_planner/base_local_planner_params.yaml" command="load"/>
+    <rosparam file="$(find youbot_navigation)/config/local_planner/base_local_planner_params.yaml" command="load"/>
   </group>
   <group ns="move_base" if="$(arg dwa_local_planner)">
     <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/>
-    <rosparam file="$(find youbot_controller)/config/local_planner/dwa_local_planner_params.yaml" command="load"/>
+    <rosparam file="$(find youbot_navigation)/config/local_planner/dwa_local_planner_params.yaml" command="load"/>
   </group>
   <group ns="move_base" if="$(arg eband_local_planner)">
     <param name="base_local_planner" value="eband_local_planner/EBandPlannerROS"/>
-    <rosparam file="$(find youbot_controller)/config/local_planner/eband_local_planner_params.yaml" command="load"/>
+    <rosparam file="$(find youbot_navigation)/config/local_planner/eband_local_planner_params.yaml" command="load"/>
   </group>
   <group ns="move_base" if="$(arg teb_local_planner)">
     <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS"/>
-    <rosparam file="$(find youbot_controller)/config/local_planner/teb_local_planner_params.yaml" command="load"/>
-  </group> 
+    <rosparam file="$(find youbot_navigation)/config/local_planner/teb_local_planner_params.yaml" command="load"/>
+  </group>
 
   <!-- Parameter Global Planner -->
   <group ns="move_base" if="$(arg carrot_planner)">
     <param name="base_global_planner" value="carrot_planner/CarrotPlanner"/>
-    <rosparam file="$(find youbot_controller)/config/global_planner/carrot_planner_params.yaml" command="load"/>
+    <rosparam file="$(find youbot_navigation)/config/global_planner/carrot_planner_params.yaml" command="load"/>
   </group>
   <group ns="move_base" if="$(arg navfn)">
     <param name="base_global_planner" value="navfn/NavfnROS"/>
-    <rosparam file="$(find youbot_controller)/config/global_planner/navfn_params.yaml" command="load"/>  
+    <rosparam file="$(find youbot_navigation)/config/global_planner/navfn_params.yaml" command="load"/>
   </group>
   <group ns="move_base" if="$(arg global_planner)">
     <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
-    <rosparam file="$(find youbot_controller)/config/global_planner/global_planner_params.yaml" command="load"/>
+    <rosparam file="$(find youbot_navigation)/config/global_planner/global_planner_params.yaml" command="load"/>
   </group>
-      
+
   <!-- Parameter Costmaps -->
   <group ns="move_base" if="$(arg use_static_map)">
-    <rosparam file="$(find youbot_controller)/config/static/costmap_common_params.yaml" command="load" ns="local_costmap"/>
-    <rosparam file="$(find youbot_controller)/config/static/costmap_common_params.yaml" command="load" ns="global_costmap"/>
-    <rosparam file="$(find youbot_controller)/config/static/local_costmap_params.yaml"  command="load"/>
-    <rosparam file="$(find youbot_controller)/config/static/global_costmap_params.yaml" command="load"/>
+    <rosparam file="$(find youbot_navigation)/config/static/costmap_common_params.yaml" command="load" ns="local_costmap"/>
+    <rosparam file="$(find youbot_navigation)/config/static/costmap_common_params.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(find youbot_navigation)/config/static/local_costmap_params.yaml"  command="load"/>
+    <rosparam file="$(find youbot_navigation)/config/static/global_costmap_params.yaml" command="load"/>
   </group>
   <group ns="move_base" unless="$(arg use_static_map)">
-    <rosparam file="$(find youbot_controller)/config/online/costmap_common_params.yaml" command="load" ns="local_costmap"/>
-    <rosparam file="$(find youbot_controller)/config/online/costmap_common_params.yaml" command="load" ns="global_costmap"/>
-    <rosparam file="$(find youbot_controller)/config/online/local_costmap_params.yaml"  command="load"/>
-    <rosparam file="$(find youbot_controller)/config/online/global_costmap_params.yaml" command="load"/>
+    <rosparam file="$(find youbot_navigation)/config/online/costmap_common_params.yaml" command="load" ns="local_costmap"/>
+    <rosparam file="$(find youbot_navigation)/config/online/costmap_common_params.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(find youbot_navigation)/config/online/local_costmap_params.yaml"  command="load"/>
+    <rosparam file="$(find youbot_navigation)/config/online/global_costmap_params.yaml" command="load"/>
   </group>
 
   <group ns="move_base" if="$(arg use_obstacles_detection)">
-    <rosparam file="$(find youbot_controller)/config/obstacles_detection_params.yaml"/>
+    <rosparam file="$(find youbot_navigation)/config/obstacles_detection_params.yaml"/>
   </group>
 
   <!-- Nodelets Obstacles Detection -->
@@ -81,12 +81,12 @@
       <remap from="rgb/image_in" to="rgb/image_rect_color"/>
       <remap from="depth/image_in" to="depth_registered/image_raw"/>
       <remap from="rgb/camera_info_in" to="rgb/camera_info"/>
-      
+
       <!-- Output -->
       <remap from="rgb/image_out" to="rgb/image_rect_color_throttled"/>
       <remap from="depth/image_out" to="depth_registered/image_raw_throttled"/>
       <remap from="rgb/camera_info_out" to="rgb/camera_info_throttled"/>
-    
+
       <param name="rate" type="double" value="5.0"/>
     </node>
 
@@ -94,7 +94,7 @@
       <!-- Input -->
       <remap from="depth/image" to="depth_registered/image_raw_throttled"/>
       <remap from="depth/camera_info" to="rgb/camera_info_throttled"/>
-      
+
       <!-- Output -->
       <remap from="cloud" to="cloud_xyz"/>
 
@@ -106,7 +106,7 @@
     <node pkg="nodelet" type="nodelet" name="obstacles_detection" args="load rtabmap_ros/obstacles_detection camera_nodelet_manager" output="screen">
       <!-- Input -->
       <remap from="cloud" to="cloud_xyz"/>
-      
+
       <!-- Output -->
       <remap from="obstacles" to="/cloud_obstacles"/>
       <remap from="ground" to="/cloud_ground"/>
@@ -129,4 +129,3 @@
   </group>
 
 </launch>
-

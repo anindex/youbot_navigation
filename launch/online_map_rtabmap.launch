@@ -1,12 +1,11 @@
 <launch>
   <!-- SLAM -->
-  <include file="$(find youbot_controller)/launch/separate/rtabmap.launch" />
-  
+  <include file="$(find youbot_navigation)/launch/separate/rtabmap.launch" />
+
   <!-- Navigation -->
-  <include file="$(find youbot_controller)/launch/separate/move_base.launch">
+  <include file="$(find youbot_navigation)/launch/separate/move_base.launch">
     <arg name="use_obstacles_detection" value="false"/>
     <arg name="use_trajectory_server"   value="true"/>
   </include>
 
 </launch>
-

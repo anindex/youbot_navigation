@@ -1,7 +1,7 @@
 <launch>
   <arg name="joy_config" value="joy_logitech"/>
   <arg name="joy_dev" value="/dev/input/js0"/>
-  <arg name="config_filepath" value="$(find youbot_controller)/config/$(arg joy_config)_params.yaml"/>
+  <arg name="config_filepath" value="$(find youbot_navigation)/config/$(arg joy_config)_params.yaml"/>
 
   <!-- Node Joy Driver -->
   <node pkg="joy" type="joy_node" name="joy" output="screen">
@@ -17,4 +17,3 @@
   </node>
 
 </launch>
-
