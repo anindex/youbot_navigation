@@ -2,7 +2,7 @@ recovery_behaviors:
 - name: super_conservative_reset
   type: clear_costmap_recovery/ClearCostmapRecovery
 - name: conservative_reset
-  type: clear_costmap_recovery/ClearCostmapRecovery 
+  type: clear_costmap_recovery/ClearCostmapRecovery
 - name: aggressive_reset
   type: clear_costmap_recovery/ClearCostmapRecovery
 
@@ -14,4 +14,3 @@ conservative_reset:
 
 aggressive_reset:
   reset_distance: 0.0
-
