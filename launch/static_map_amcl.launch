@@ -1,6 +1,6 @@
 <launch>
   <!-- Map Server -->
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find youbot_navigation)/map/default.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find youbot_navigation)/map/sample.yaml"/>
 
   <!-- Localization -->
   <include file="$(find youbot_navigation)/launch/separate/amcl.launch"/>
