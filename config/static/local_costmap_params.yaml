@@ -38,5 +38,5 @@ local_costmap:
       inf_is_valid: false}
 
   inflater:
-    inflation_radius: 0.50
+    inflation_radius: 0.30
     cost_scaling_factor: 10.0
