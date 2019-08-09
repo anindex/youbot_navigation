@@ -11,5 +11,4 @@
   <!-- Multiplexer Remote Control -->
   <include file="$(find youbot_navigation)/launch/separate/twist_mux.launch" />
 
-  <include file="$(find krp_localization)/launch/probe_rssi.launch" />
 </launch>
